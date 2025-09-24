@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Assisted Learning Module</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>AI-Assisted Learning</h1>
+            <p>Master the art of responsible AI use in education</p>
+        </header>
+
+        <nav class="nav">
+            <div class="nav-container">
+                <button class="nav-item active" onclick="showSection('home')">Home</button>
+                <button class="nav-item" onclick="showSection('ai-supported')">AI-Supported Learning</button>
+                <button class="nav-item" onclick="showSection('misuse-pitfalls')">Misuse & Pitfalls</button>
+                <button class="nav-item" onclick="showSection('finding-balance')">Finding Balance</button>
+                <button class="nav-item" onclick="showSection('sandbox')">Practice</button>
+            </div>
+        </nav>
+
+        <main class="content">
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+            </div>
+
+            <!-- Completion Indicator -->
+            <div class="completion-indicator" id="completionIndicator" style="display: none;">
+                <div class="completion-circle">
+                    <span class="completion-checkmark">✓</span>
+                </div>
+                <div class="completion-text">You've completed your A.I training</div>
+            </div>
+
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="hero">
+                    <h2>Why AI-Assisted Learning Matters Today</h2>
+                    <p>In our rapidly evolving digital landscape, AI tools are transforming how we learn, research, and
+                        create. Understanding how to use these tools responsibly and effectively is crucial for academic
+                        and professional success.</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card" onclick="showSection('ai-supported')">
+                        <h3><span class="icon">🚀</span> Boost Your Learning</h3>
+                        <div class="card-content">
+                            Discover how AI can enhance your study sessions, research capabilities, and creative
+                            processes while maintaining academic integrity.
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="showSection('misuse-pitfalls')">
+                        <h3><span class="icon">⚠️</span> Avoid Common Pitfalls</h3>
+                        <div class="card-content">
+                            Learn about the dangers of over-reliance, bias, and academic misconduct when using AI tools
+                            inappropriately.
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="showSection('finding-balance')">
+                        <h3><span class="icon">⚖️</span> Find the Balance</h3>
+                        <div class="card-content">
+                            Develop ethical guidelines and best practices for integrating AI into your learning workflow
+                            responsibly.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI-Supported Learning Section -->
+            <section id="ai-supported" class="section">
+                <div class="hero">
+                    <h2>AI-Supported Learning: The Do's</h2>
+                    <p>Harness the power of AI to enhance your learning experience</p>
+                </div>
+
+                <div class="microlearning-indicator">📚 Lesson 1 of 4</div>
+
+                <div class="card-grid">
+                    <div class="card" onclick="toggleExpand(this)">
+                        <h3>✅ Brainstorming & Ideation</h3>
+                        <div class="card-content expandable">
+                            <p>Use AI to generate ideas, explore different perspectives, and overcome creative blocks.
+                            </p>
+                            <div class="alert-box success">
+                                <h4>✅ Best Practice Example</h4>
+                                <p>"I'm writing an essay about climate change. Help me brainstorm 5 unique angles I
+                                    could explore, focusing on lesser-known impacts." This uses AI as a thinking partner
+                                    while you maintain control of the direction.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleExpand(this)">
+                        <h3>✅ Research Assistance</h3>
+                        <div class="card-content expandable">
+                            <p>AI can help you find relevant sources, summarize complex topics, and identify key
+                                concepts.</p>
+                            <div class="alert-box success">
+                                <h4>✅ Best Practice Example</h4>
+                                <p>"Explain quantum computing in simple terms and suggest 3 academic sources I should
+                                    read for deeper understanding." This helps you grasp complex topics while directing
+                                    you to primary sources.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleExpand(this)">
+                        <h3>✅ Study Aid & Tutoring</h3>
+                        <div class="card-content expandable">
+                            <p>Create practice questions, explain difficult concepts, and get personalized learning
+                                support.</p>
+                            <div class="alert-box success">
+                                <h4>✅ Best Practice Example</h4>
+                                <p>"I'm struggling with calculus derivatives. Can you create 5 practice problems with
+                                    increasing difficulty and walk me through the solutions?" This provides targeted
+                                    practice and explanation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" onclick="toggleExpand(this)">
+                        <h3>✅ Writing Enhancement</h3>
+                        <div class="card-content expandable">
+                            <p>Improve grammar, clarity, and style while maintaining your unique voice and ideas.</p>
+                            <div class="alert-box success">
+                                <h4>✅ Best Practice Example</h4>
+                                <p>"Review this paragraph for clarity and suggest improvements while keeping my main
+                                    arguments intact." This uses AI to polish your original work, not replace it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz1">
+                    <div class="quiz-question">Which of these represents ethical AI use for learning?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">
+                            Having AI write your entire research paper
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">
+                            Using AI to generate practice questions for exam preparation
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">
+                            Copying AI-generated content without attribution
+                        </div>
+                    </div>
+                    <button class="btn" onclick="submitQuiz('quiz1')" disabled>Submit Answer</button>
+                    <div id="quiz1-feedback"></div>
+                </div>
+            </section>
+
+            <!-- Misuse & Pitfalls Section -->
+            <section id="misuse-pitfalls" class="section">
+                <div class="hero">
+                    <h2>Misuse & Pitfalls: The Don'ts</h2>
+                    <p>Avoid these common mistakes and ethical violations</p>
+                </div>
+
+                <div class="microlearning-indicator">📚 Lesson 2 of 4</div>
+
+                <div class="alert-box">
+                    <h4>❌ Academic Dishonesty</h4>
+                    <p>Never submit AI-generated work as your own. This constitutes plagiarism and violates academic
+                        integrity policies.</p>
+                </div>
+
+                <div class="alert-box warning">
+                    <h4>⚠️ Over-Reliance & Skill Atrophy</h4>
+                    <p>Depending too heavily on AI can prevent you from developing critical thinking, writing, and
+                        problem-solving skills.</p>
+                </div>
+
+                <div class="alert-box">
+                    <h4>❌ Bias Amplification</h4>
+                    <p>AI models can perpetuate biases present in their training data. Always critically evaluate
+                        AI-generated content.</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>❌ Common Mistakes to Avoid</h3>
+                        <ul class="checklist">
+                            <li><span>❌</span> Submitting AI-generated essays or assignments</li>
+                            <li><span>❌</span> Using AI to take exams or complete assessments</li>
+                            <li><span>❌</span> Blindly trusting AI-provided information</li>
+                            <li><span>❌</span> Ignoring institutional AI policies</li>
+                            <li><span>❌</span> Using AI without disclosure when required</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>⚠️ Warning Signs of Misuse</h3>
+                        <ul class="checklist">
+                            <li><span>⚠️</span> You can't explain your own work</li>
+                            <li><span>⚠️</span> Your skills aren't improving over time</li>
+                            <li><span>⚠️</span> You avoid challenging tasks without AI</li>
+                            <li><span>⚠️</span> Your work doesn't reflect your voice</li>
+                            <li><span>⚠️</span> You're hiding your AI usage</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz2">
+                    <div class="quiz-question">Which scenario represents AI misuse?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">
+                            Using AI to explain a complex concept you're studying
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">
+                            Having AI complete your homework assignment
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">
+                            Asking AI to generate practice questions for review
+                        </div>
+                    </div>
+                    <button class="btn" onclick="submitQuiz('quiz2')" disabled>Submit Answer</button>
+                    <div id="quiz2-feedback"></div>
+                </div>
+            </section>
+
+            <!-- Finding Balance Section -->
+            <section id="finding-balance" class="section">
+                <div class="hero">
+                    <h2>Finding the Balance</h2>
+                    <p>Ethical guidelines and best practices for responsible AI integration</p>
+                </div>
+
+                <div class="microlearning-indicator">📚 Lesson 3 of 4</div>
+
+                <div class="card">
+                    <h3>🎯 The Golden Rules of AI-Assisted Learning</h3>
+                    <ul class="checklist">
+                        <li><span>✅</span> <strong>Transparency:</strong> Always disclose when and how you've used AI
+                        </li>
+                        <li><span>✅</span> <strong>Attribution:</strong> Cite AI tools just like any other source</li>
+                        <li><span>✅</span> <strong>Verification:</strong> Always fact-check AI-generated information
+                        </li>
+                        <li><span>✅</span> <strong>Learning Focus:</strong> Use AI to enhance, not replace, your
+                            learning</li>
+                        <li><span>✅</span> <strong>Skill Development:</strong> Ensure you're still building core
+                            competencies</li>
+                        <li><span>✅</span> <strong>Policy Compliance:</strong> Follow your institution's AI guidelines
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>🔄 The AI Learning Workflow</h3>
+                        <div class="card-content">
+                            <p><strong>1. Define Your Goal:</strong> What do you want to learn or accomplish?</p>
+                            <p><strong>2. Use AI as a Tool:</strong> Let AI assist, but maintain control</p>
+                            <p><strong>3. Verify & Validate:</strong> Check AI outputs against reliable sources</p>
+                            <p><strong>4. Reflect & Apply:</strong> Process the information and make it your own</p>
+                            <p><strong>5. Document Usage:</strong> Keep track of how AI assisted you</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>📝 Documentation Template</h3>
+                        <div class="card-content">
+                            <p><em>"For this assignment, I used [AI Tool Name] to [specific purpose]. The AI helped me
+                                    [describe assistance]. I then [describe your contribution and verification
+                                    process]."</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz3">
+                    <div class="quiz-question">What's the most important principle when using AI for learning?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">
+                            Using AI to complete tasks as quickly as possible
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">
+                            Maintaining transparency about AI usage and ensuring it enhances your learning
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">
+                            Keeping AI usage secret to avoid complications
+                        </div>
+                    </div>
+                    <button class="btn" onclick="submitQuiz('quiz3')" disabled>Submit Answer</button>
+                    <div id="quiz3-feedback"></div>
+                </div>
+            </section>
+
+            <!-- Sandbox Section -->
+            <section id="sandbox" class="section">
+                <div class="hero">
+                    <h2>Practice Sandbox</h2>
+                    <p>Test your understanding with hands-on exercises</p>
+                </div>
+
+                <div class="microlearning-indicator">📚 Lesson 4 of 4</div>
+
+                <div class="sandbox">
+                    <h3>🧪 AI Prompt Evaluation Exercise</h3>
+                    <p>Evaluate whether these prompts represent ethical AI use for learning:</p>
+
+                    <textarea id="promptInput"
+                        placeholder="Example prompt: 'Help me understand the main themes in Hamlet and suggest questions I should consider while reading.'"></textarea>
+
+                    <button class="btn" onclick="evaluatePrompt()">Evaluate This Prompt</button>
+
+                    <div class="sandbox-result" id="promptResult">
+                        <em>Enter a prompt above to see the evaluation...</em>
+                    </div>
+                </div>
+
+                <div class="game-section">
+                    <h3>🎮 AI Ethics Challenge Game</h3>
+                    <p>Test your knowledge with our interactive scenario-based game!</p>
+
+                    <div class="game-container">
+                        <div class="game-header">
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <span class="stat-icon">⭐</span>
+                                    <span class="stat-value" id="gameScore">0</span>
+                                    <span class="stat-label">Score</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">🔥</span>
+                                    <span class="stat-value" id="gameStreak">0</span>
+                                    <span class="stat-label">Streak</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">🏆</span>
+                                    <span class="stat-value" id="gameLevel">Novice</span>
+                                    <span class="stat-label">Level</span>
+                                </div>
+                            </div>
+                            <div class="game-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="gameProgressFill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">Question <span id="currentQuestion">1</span> of <span
+                                        id="totalQuestions">10</span></span>
+                            </div>
+                        </div>
+
+                        <div class="game-content" id="gameContent">
+                            <div class="scenario-card">
+                                <div class="scenario-title">Scenario #1</div>
+                                <div class="scenario-text" id="scenarioText">
+                                    You're working on a research paper about renewable energy. You ask ChatGPT to "write
+                                    a 500-word introduction about solar power advantages." What should you do next?
+                                </div>
+                                <div class="scenario-choices" id="scenarioChoices">
+                                    <div class="choice-btn"
+                                        onclick="selectChoice(this, 10, 'You used the AI output as inspiration and wrote your own introduction, properly citing the AI assistance.')">
+                                        Use it as inspiration and write your own version, citing AI assistance
+                                    </div>
+                                    <div class="choice-btn"
+                                        onclick="selectChoice(this, -5, 'This would be plagiarism. AI-generated content should never be submitted as your own work.')">
+                                        Copy and paste it directly into your paper
+                                    </div>
+                                    <div class="choice-btn"
+                                        onclick="selectChoice(this, 5, 'Better than copying directly, but you should still write your own version and cite AI assistance.')">
+                                        Edit it slightly and use it without citation
+                                    </div>
+                                    <div class="choice-btn"
+                                        onclick="selectChoice(this, -2, 'This misses the learning opportunity and ethical issues with using AI-generated content.')">
+                                        Ask for a longer version to save time
+                                    </div>
+                                </div>
+                                <div class="choice-feedback" id="choiceFeedback"></div>
+                            </div>
+                        </div>
+
+                        <div class="game-actions">
+                            <button class="btn" id="nextBtn" onclick="nextQuestion()" style="display: none;">Next
+                                Question</button>
+                            <button class="btn" id="restartBtn" onclick="restartGame()" style="display: none;">Play
+                                Again</button>
+                        </div>
+
+                        <div class="achievements" id="achievements">
+                            <h4>🏅 Achievements</h4>
+                            <div class="achievement-list">
+                                <div class="achievement" id="achievement-first">
+                                    <span class="achievement-icon">🎯</span>
+                                    <span class="achievement-name">First Try</span>
+                                </div>
+                                <div class="achievement" id="achievement-streak">
+                                    <span class="achievement-icon">🔥</span>
+                                    <span class="achievement-name">Hot Streak (3 in a row)</span>
+                                </div>
+                                <div class="achievement" id="achievement-perfect">
+                                    <span class="achievement-icon">💎</span>
+                                    <span class="achievement-name">Perfect Score</span>
+                                </div>
+                                <div class="achievement" id="achievement-expert">
+                                    <span class="achievement-icon">🧠</span>
+                                    <span class="achievement-name">Ethics Expert (80%+)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="discussion-section">
+                    <h3>💬 Discussion: Share Your Experience</h3>
+                    <p>How have you used AI tools in your learning? Share your successes and challenges:</p>
+
+                    <div class="comment">
+                        <div class="comment-author">Sarah M.</div>
+                        <div>I use AI to generate practice questions for my chemistry exams. It's been really helpful
+                            for identifying areas where I need more study time!</div>
+                    </div>
+
+                    <div class="comment">
+                        <div class="comment-author">Mike R.</div>
+                        <div>Initially, I relied too heavily on AI for writing. Now I use it just for brainstorming and
+                            editing suggestions. Much better approach!</div>
+                    </div>
+
+                    <textarea placeholder="Share your experience with AI in learning..."
+                        style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; min-height: 80px; margin-top: 1rem;"></textarea>
+                    <button class="btn">Add Comment</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
