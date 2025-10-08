@@ -2,7 +2,7 @@
 let currentSection = 'home';
 let quizAnswers = {};
 let completedSections = new Set(['home']);
-let sectionOrder = ['home', 'ai-supported', 'misuse-pitfalls', 'finding-balance', 'sandbox'];
+let sectionOrder = ['home', 'self-assessment', 'ai-supported', 'misuse-pitfalls', 'finding-balance', 'sandbox'];
 let allSectionsCompleted = false;
 
 // Game variables
@@ -432,3 +432,128 @@ document.addEventListener('DOMContentLoaded', function() {
     updateGameStats();
     updateProgress();
 });
+
+
+// Self-Assessment Functions
+function analyzeAssessment() {
+    const frequency = document.querySelector('input[name="frequency"]:checked');
+    const usageTypes = document.querySelectorAll('input[name="usage"]:checked');
+    const afterUse = document.querySelector('input[name="afteruse"]:checked');
+    const disclosure = document.querySelector('input[name="disclosure"]:checked');
+    
+    if (!frequency || !afterUse || !disclosure) {
+        alert('Please answer all questions before submitting.');
+        return;
+    }
+    
+    const results = document.getElementById('assessmentResults');
+    const feedback = document.getElementById('assessmentFeedback');
+    
+    let feedbackHTML = '';
+    let overallScore = 0;
+    let maxScore = 0;
+    
+    // Analyze frequency
+    feedbackHTML += '<div class="result-category">';
+    feedbackHTML += '<h4>📊 Usage Frequency</h4>';
+    if (frequency.value === 'never') {
+        feedbackHTML += '<p>You may be missing out on valuable learning opportunities. Consider exploring how AI can support your studies ethically.</p>';
+    } else if (frequency.value === 'often') {
+        feedbackHTML += '<p>You use AI frequently. Make sure you\'re maintaining a balance and not becoming over-reliant.</p>';
+    } else {
+        feedbackHTML += '<p>Your usage frequency seems balanced. Continue to be mindful of when AI is truly helpful.</p>';
+    }
+    feedbackHTML += '</div>';
+    
+    // Analyze usage patterns
+    feedbackHTML += '<div class="result-category">';
+    feedbackHTML += '<h4>🎯 Usage Patterns</h4>';
+    const goodPatterns = ['explain', 'brainstorm', 'practice', 'edit'];
+    const badPatterns = ['complete'];
+    
+    let hasGoodPatterns = false;
+    let hasBadPatterns = false;
+    
+    usageTypes.forEach(checkbox => {
+        if (goodPatterns.includes(checkbox.value)) {
+            hasGoodPatterns = true;
+            overallScore += 10;
+        }
+        if (badPatterns.includes(checkbox.value)) {
+            hasBadPatterns = true;
+            overallScore -= 15;
+        }
+        maxScore += 10;
+    });
+    
+    if (hasBadPatterns) {
+        feedbackHTML += '<p><strong>⚠️ Area for Improvement:</strong> Using AI to complete assignments is academic dishonesty. Focus on using AI as a learning tool instead.</p>';
+    }
+    if (hasGoodPatterns) {
+        feedbackHTML += '<p><strong>✅ Strength:</strong> You\'re using AI for legitimate learning purposes like understanding concepts and practicing skills.</p>';
+    }
+    if (usageTypes.length === 0) {
+        feedbackHTML += '<p>Consider the various ways AI can support your learning journey.</p>';
+    }
+    feedbackHTML += '</div>';
+    
+    // Analyze verification habits
+    feedbackHTML += '<div class="result-category">';
+    feedbackHTML += '<h4>🔍 Verification Practices</h4>';
+    maxScore += 20;
+    if (afterUse.value === 'verify') {
+        feedbackHTML += '<p><strong>✅ Excellent:</strong> You consistently verify AI-generated information. This is a critical practice for maintaining accuracy.</p>';
+        overallScore += 20;
+    } else if (afterUse.value === 'sometimes-verify') {
+        feedbackHTML += '<p><strong>⚠️ Needs Improvement:</strong> Aim to always verify AI outputs. AI can sometimes provide inaccurate information.</p>';
+        overallScore += 10;
+    } else {
+        feedbackHTML += '<p><strong>❌ Critical Issue:</strong> Always verify AI-generated information. Blindly trusting AI can lead to errors and misinformation.</p>';
+    }
+    feedbackHTML += '</div>';
+    
+    // Analyze disclosure habits
+    feedbackHTML += '<div class="result-category">';
+    feedbackHTML += '<h4>📢 Transparency & Disclosure</h4>';
+    maxScore += 20;
+    if (disclosure.value === 'always') {
+        feedbackHTML += '<p><strong>✅ Excellent:</strong> You maintain transparency about AI usage. This demonstrates academic integrity.</p>';
+        overallScore += 20;
+    } else if (disclosure.value === 'sometimes') {
+        feedbackHTML += '<p><strong>⚠️ Needs Improvement:</strong> Consistency in disclosure is important. Always disclose AI usage when required or when in doubt.</p>';
+        overallScore += 10;
+    } else {
+        feedbackHTML += '<p><strong>❌ Critical Issue:</strong> Failing to disclose AI usage can constitute academic dishonesty. Always be transparent.</p>';
+    }
+    feedbackHTML += '</div>';
+    
+    // Overall recommendations
+    const percentage = maxScore > 0 ? Math.max(0, Math.min(100, (overallScore / maxScore) * 100)) : 50;
+    
+    feedbackHTML += '<div class="result-category" style="border-left-color: #667eea; background: #f0f4ff;">';
+    feedbackHTML += '<h4>🎯 Overall Assessment & Next Steps</h4>';
+    
+    if (percentage >= 80) {
+        feedbackHTML += '<p><strong>Status: AI Ethics Champion 🏆</strong></p>';
+        feedbackHTML += '<p>You demonstrate excellent understanding of responsible AI use. Continue setting a positive example for others.</p>';
+        feedbackHTML += '<ul><li>Share your best practices with peers</li><li>Stay updated on evolving AI ethics guidelines</li><li>Mentor others in responsible AI use</li></ul>';
+    } else if (percentage >= 60) {
+        feedbackHTML += '<p><strong>Status: On the Right Track ✅</strong></p>';
+        feedbackHTML += '<p>You have a good foundation but there\'s room for improvement in some areas.</p>';
+        feedbackHTML += '<ul><li>Focus on the areas marked for improvement above</li><li>Review the Finding Balance section</li><li>Practice ethical AI use consistently</li></ul>';
+    } else if (percentage >= 40) {
+        feedbackHTML += '<p><strong>Status: Needs Development ⚠️</strong></p>';
+        feedbackHTML += '<p>You have significant areas to improve to use AI responsibly.</p>';
+        feedbackHTML += '<ul><li>Review all module sections carefully</li><li>Focus on using AI as an assistant, not a replacement</li><li>Develop better verification and disclosure habits</li></ul>';
+    } else {
+        feedbackHTML += '<p><strong>Status: High Risk ❌</strong></p>';
+        feedbackHTML += '<p>Your current AI usage patterns may lead to academic integrity violations.</p>';
+        feedbackHTML += '<ul><li>Review the entire module, especially Misuse & Pitfalls</li><li>Speak with an instructor or academic advisor</li><li>Commit to using AI only as a learning assistant</li></ul>';
+    }
+    
+    feedbackHTML += '</div>';
+    
+    feedback.innerHTML = feedbackHTML;
+    results.style.display = 'block';
+    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}

@@ -19,6 +19,7 @@
         <nav class="nav">
             <div class="nav-container">
                 <button class="nav-item active" onclick="showSection('home')">Home</button>
+                <button class="nav-item" onclick="showSection('self-assessment')">Self-Assessment</button>
                 <button class="nav-item" onclick="showSection('ai-supported')">AI-Supported Learning</button>
                 <button class="nav-item" onclick="showSection('misuse-pitfalls')">Misuse & Pitfalls</button>
                 <button class="nav-item" onclick="showSection('finding-balance')">Finding Balance</button>
@@ -76,6 +77,199 @@
                 </div>
             </section>
 
+            <!-- Self-Assessment Section -->
+            <section id="self-assessment" class="section">
+                <div class="hero">
+                    <h2>Self-Assessment: Improve Your AI Usage</h2>
+                    <p>Reflect on your current AI practices and develop strategies for improvement</p>
+                </div>
+
+                <div class="microlearning-indicator">📚 Lesson 1 of 5</div>
+
+                <div class="card">
+                    <h3>🎯 Learning Objectives</h3>
+                    <ul class="checklist">
+                        <li><strong>Recognize how your use of AI can be improved</strong></li>
+                        <li><strong>Analyze your current use of AI and reform attitude to utilize it as
+                                an assistant</strong></li>
+                    </ul>
+                </div>
+
+                <div class="assessment-container">
+                    <h3>📊 Current AI Usage Analysis</h3>
+                    <p>Answer these questions honestly to evaluate your current AI usage patterns:</p>
+
+                    <div class="assessment-question">
+                        <h4>1. How often do you use AI tools for academic work?</h4>
+                        <div class="assessment-options">
+                            <label class="assessment-option">
+                                <input type="radio" name="frequency" value="never">
+                                <span>Never</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="radio" name="frequency" value="rarely">
+                                <span>Rarely (once a month or less)</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="radio" name="frequency" value="sometimes">
+                                <span>Sometimes (weekly)</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="radio" name="frequency" value="often">
+                                <span>Often (daily)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="assessment-question">
+                        <h4>2. When you use AI, you primarily use it to:</h4>
+                        <div class="assessment-options">
+                            <label class="assessment-option">
+                                <input type="checkbox" name="usage" value="complete">
+                                <span>Complete assignments for me</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="checkbox" name="usage" value="explain">
+                                <span>Explain difficult concepts</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="checkbox" name="usage" value="brainstorm">
+                                <span>Brainstorm ideas</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="checkbox" name="usage" value="practice">
+                                <span>Generate practice questions</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="checkbox" name="usage" value="edit">
+                                <span>Edit and improve my writing</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="assessment-question">
+                        <h4>3. After using AI, do you:</h4>
+                        <div class="assessment-options">
+                            <label class="assessment-option">
+                                <input type="radio" name="afteruse" value="verify">
+                                <span>Always verify the information from other sources</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="radio" name="afteruse" value="sometimes-verify">
+                                <span>Sometimes verify the information</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="radio" name="afteruse" value="trust">
+                                <span>Trust AI outputs without verification</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="assessment-question">
+                        <h4>4. Do you disclose your AI usage when required?</h4>
+                        <div class="assessment-options">
+                            <label class="assessment-option">
+                                <input type="radio" name="disclosure" value="always">
+                                <span>Always</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="radio" name="disclosure" value="sometimes">
+                                <span>Sometimes</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="radio" name="disclosure" value="rarely">
+                                <span>Rarely</span>
+                            </label>
+                            <label class="assessment-option">
+                                <input type="radio" name="disclosure" value="never">
+                                <span>Never</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="analyzeAssessment()">Analyze My AI Usage</button>
+
+                    <div class="assessment-results" id="assessmentResults" style="display: none;">
+                        <h3>📈 Your Assessment Results</h3>
+                        <div id="assessmentFeedback"></div>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>🔍 Reflection Exercise</h3>
+                        <div class="card-content">
+                            <p><strong>Think about a recent time you used AI for learning. Reflect on:</strong></p>
+                            <textarea
+                                placeholder="1. What was your goal?&#10;2. How did AI help you?&#10;3. Did you verify the information?&#10;4. What did you learn from the process?&#10;5. How could you have used AI more effectively?"
+                                style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; min-height: 150px; margin-top: 1rem;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎯 Action Plan for Improvement</h3>
+                        <div class="card-content">
+                            <p><strong>Based on your reflection, create specific goals:</strong></p>
+                            <textarea
+                                placeholder="Example: 'I will always verify AI-generated facts by checking at least two reliable sources before including them in my work.'&#10;&#10;My goals:&#10;1.&#10;2.&#10;3."
+                                style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; min-height: 150px; margin-top: 1rem;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert-box success">
+                    <h4>✅ Reframing Your Mindset: AI as Your Assistant</h4>
+                    <p><strong>Instead of thinking:</strong> "AI can do this work for me"</p>
+                    <p><strong>Think:</strong> "AI can help me learn and improve my skills"</p>
+                    <br>
+                    <p><strong>Key Mindset Shifts:</strong></p>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>🔄 From <em>replacement</em> to <em>enhancement</em></li>
+                        <li>🔄 From <em>shortcuts</em> to <em>learning tools</em></li>
+                        <li>🔄 From <em>dependency</em> to <em>partnership</em></li>
+                        <li>🔄 From <em>passive consumption</em> to <em>active learning</em></li>
+                    </ul>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card negative">
+                        <h4>❌ AI as a Replacement</h4>
+                        <ul>
+                            <li>Asking AI to write your entire essay</li>
+                            <li>Using AI to avoid challenging work</li>
+                            <li>Submitting AI output as your own</li>
+                            <li>Depending on AI instead of learning</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card positive">
+                        <h4>✅ AI as an Assistant</h4>
+                        <ul>
+                            <li>Using AI to brainstorm essay topics</li>
+                            <li>Getting AI help to understand difficult concepts</li>
+                            <li>Using AI feedback to improve your writing</li>
+                            <li>Learning with AI as a study partner</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quiz-container" id="quiz4">
+                    <div class="quiz-question">Which statement best reflects using AI as an assistant?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">
+                            "I let AI do the hard thinking so I can finish faster"
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, true)">
+                            "I use AI to understand concepts better and practice my skills"
+                        </div>
+                        <div class="quiz-option" onclick="selectQuizOption(this, false)">
+                            "I copy AI outputs and make small changes to save time"
+                        </div>
+                    </div>
+                    <button class="btn" onclick="submitQuiz('quiz4')" disabled>Submit Answer</button>
+                    <div id="quiz4-feedback"></div>
+                </div>
+            </section>
+
             <!-- AI-Supported Learning Section -->
             <section id="ai-supported" class="section">
                 <div class="hero">
@@ -83,7 +277,7 @@
                     <p>Harness the power of AI to enhance your learning experience</p>
                 </div>
 
-                <div class="microlearning-indicator">📚 Lesson 1 of 4</div>
+                <div class="microlearning-indicator">📚 Lesson 2 of 5</div>
 
                 <div class="card-grid">
                     <div class="card" onclick="toggleExpand(this)">
@@ -166,7 +360,7 @@
                     <p>Avoid these common mistakes and ethical violations</p>
                 </div>
 
-                <div class="microlearning-indicator">📚 Lesson 2 of 4</div>
+                <div class="microlearning-indicator">📚 Lesson 3 of 5</div>
 
                 <div class="alert-box">
                     <h4>❌ Academic Dishonesty</h4>
@@ -235,7 +429,7 @@
                     <p>Ethical guidelines and best practices for responsible AI integration</p>
                 </div>
 
-                <div class="microlearning-indicator">📚 Lesson 3 of 4</div>
+                <div class="microlearning-indicator">📚 Lesson 4 of 5</div>
 
                 <div class="card">
                     <h3>🎯 The Golden Rules of AI-Assisted Learning</h3>
@@ -301,7 +495,7 @@
                     <p>Test your understanding with hands-on exercises</p>
                 </div>
 
-                <div class="microlearning-indicator">📚 Lesson 4 of 4</div>
+                <div class="microlearning-indicator">📚 Lesson 5 of 5</div>
 
                 <div class="sandbox">
                     <h3>🧪 AI Prompt Evaluation Exercise</h3>

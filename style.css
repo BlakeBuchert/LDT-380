@@ -659,3 +659,156 @@ body {
         transform: scale(1); 
     }
 }
+
+
+
+/* Self-Assessment Styles */
+.assessment-container {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.assessment-question {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.assessment-question h4 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.assessment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.assessment-option {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.assessment-option:hover {
+    background: #e2e8f0;
+    border-color: #667eea;
+}
+
+.assessment-option input[type="radio"],
+.assessment-option input[type="checkbox"] {
+    margin-right: 0.75rem;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.assessment-option span {
+    flex: 1;
+}
+
+.assessment-results {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 2px solid #667eea;
+    animation: fadeIn 0.5s ease;
+}
+
+.assessment-results h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.result-category {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-left: 4px solid #667eea;
+}
+
+.result-category h4 {
+    color: #333;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.result-category ul {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.result-category li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.comparison-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.comparison-card.negative {
+    background: #fff5f5;
+    border: 2px solid #fed7d7;
+}
+
+.comparison-card.positive {
+    background: #f0fff4;
+    border: 2px solid #9ae6b4;
+}
+
+.comparison-card h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.comparison-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.comparison-card li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.comparison-card.negative li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #f56565;
+    font-weight: bold;
+}
+
+.comparison-card.positive li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #48bb78;
+    font-weight: bold;
+}
